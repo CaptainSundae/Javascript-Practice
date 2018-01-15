@@ -3,9 +3,10 @@
 
 
 <body>
+	<!--Version 1.2: Just to check github changes -->
 <video id="videoElement" autoplay width="500" height="500"></video>
 <button id="picButton">CLICK</button>
-<canvas id="canvas" width="500" height="500" visibility="hidden"></canvas>
+<canvas id="canvas" width="500" height="500"></canvas>
 <p id = "check"></p>
 
 
@@ -28,7 +29,7 @@
 	// Trigger photo take
 	var hello=document.getElementById("picButton").addEventListener("click", function() {
 		context.drawImage(video,0,0,500,500);
-		var dURL = canvas.toDataURL("image/jpeg",0.2);
+		var dURL = canvas.toDataURL("image/jpeg",1 );
 		console.log(makeblob(dURL));
 		//document.write('<img src="'+dataURL+'"/>');
 		document.getElementById('check').innerHTML='<img id="dataU" width="500" height="500" src="'+dURL+'"/>';
