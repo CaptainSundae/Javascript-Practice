@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html>
-
+<head>
+    <link rel="stylesheet" type="text/css" href="camera.css">
+</head>
 
 <body>
+<div id= "rowContainer">
 	<!--Version 1.2: Just to check github changes -->
-<video id="videoElement" autoplay width="500" height="500"></video>
+    <div id = "workArea" style="text-align: center;">
+        <video id="videoElement" autoplay></video>
+    </div>
+
+    <div id="layer1" style="text-align: center; display:none; ">
+        <canvas id="canvas" height ="500" width="500" style="text-align: center;"></canvas>    
+    </div>
+    <div id="layer21">
+        <p id="countDown"></p>
+    </div>
+</div>
+
 <button id="picButton">CLICK</button>
-<canvas id="canvas" width="500" height="500"></canvas>
 <p id = "check"></p>
+<p id = "practice" style="display:none;">Showing</p>
 
 
 <button onclick="ocr();">ocr!</button>
@@ -23,16 +37,20 @@
 			video.play();
 		});
 	}
-
 	var canvas = document.getElementById('canvas');
 	var context = canvas.getContext('2d');
+    var counter=document.getElementById('countDown');
 	// Trigger photo take
 	var hello=document.getElementById("picButton").addEventListener("click", function() {
-		context.drawImage(video,0,0,500,500);
+        for(i=3; i!=0; i--){
+            counter.innerHTML()=i;        }
+        document.getElementById("layer11").style.display="block";
+        context.drawImage(video,0,0,500,500);
+        video.style.display="none";
 		var dURL = canvas.toDataURL("image/jpeg",1 );
 		console.log(makeblob(dURL));
 		//document.write('<img src="'+dataURL+'"/>');
-		document.getElementById('check').innerHTML='<img id="dataU" width="500" height="500" src="'+dURL+'"/>';
+		document.getElementById('check').innerHTML='<img id="dataU" width="500" height="500" style="display:none;" src="'+dURL+'"/>';
 		ocr();
 	});
 
